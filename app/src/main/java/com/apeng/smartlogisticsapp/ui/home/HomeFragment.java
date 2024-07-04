@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.apeng.smartlogisticsapp.QRCodeScannerActivity;
 import com.apeng.smartlogisticsapp.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -23,14 +24,19 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.scanButton.setOnClickListener(button -> {
+            startActivity(new Intent(getActivity(), QRCodeScannerActivity.class));
+        });
     }
 
     @Override
