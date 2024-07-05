@@ -57,9 +57,9 @@ public class QRCodeScannerActivity extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(this, "Scan cancelled", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "扫码取消", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "扫码成功", Toast.LENGTH_LONG).show();
                 setActivityResult(result);
             }
             finish();

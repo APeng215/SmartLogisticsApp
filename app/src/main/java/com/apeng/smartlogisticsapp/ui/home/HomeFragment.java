@@ -62,6 +62,10 @@ public class HomeFragment extends Fragment {
             ORDER_SERVICE.getOrder(orderId).enqueue(new Callback<OrderResponse>() {
                 @Override
                 public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
+                    if (response.code() == 401) {
+                        Toast.makeText(HomeFragment.this.getContext(), "未登录，请求失败", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     Log.i(TAG, "onResponse: " + response);
                     OrderResponse orderResponse = response.body();
                     Order order = orderResponse.getOrder();

@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.apeng.smartlogisticsapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_account"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -1,8 +1,7 @@
-package com.apeng.smartlogisticsapp.activity;
+package com.apeng.smartlogisticsapp;
 
 import android.os.Bundle;
 
-import com.apeng.smartlogisticsapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

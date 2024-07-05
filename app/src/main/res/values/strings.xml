@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">SmartLogisticsApp</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">面板</string>
+    <string name="title_account">账号</string>
     <string name="scanQRCode">扫码</string>
     <string name="unknown">XXX</string>
 </resources>
