@@ -53,9 +53,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (true) {
-//            long orderId = data.getLongExtra(QRCodeScannerActivity.ORDER_ID_KEY, -1L);
-            ORDER_SERVICE.getOrder(1L).enqueue(new Callback<OrderResponse>() {
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            long orderId = data.getLongExtra(QRCodeScannerActivity.ORDER_ID_KEY, -1L);
+            ORDER_SERVICE.getOrder(orderId).enqueue(new Callback<OrderResponse>() {
                 @Override
                 public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
                     if (response.code() == 401) {
