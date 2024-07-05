@@ -1,5 +1,7 @@
 package com.apeng.smartlogisticsapp.ui.home;
 
+import static com.apeng.smartlogisticsapp.RetrofitInitializer.RETROFIT;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,18 +25,12 @@ import com.apeng.smartlogisticsapp.service.dto.OrderResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class HomeFragment extends Fragment {
 
     private static final String TAG = "HomeFragment";
     private static final int REQUEST_CODE = 51615;
-    private static final Retrofit RETROFIT = new Retrofit.Builder()
-            .baseUrl(OrderService.SERVER_URL)
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build();
-    private static final OrderService ORDER_SERVICE = RETROFIT.create(OrderService.class);
+    private final OrderService ORDER_SERVICE = RETROFIT.create(OrderService.class);
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,9 +53,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            long orderId = data.getLongExtra(QRCodeScannerActivity.ORDER_ID_KEY, -1L);
-            ORDER_SERVICE.getOrder(orderId).enqueue(new Callback<OrderResponse>() {
+        if (true) {
+//            long orderId = data.getLongExtra(QRCodeScannerActivity.ORDER_ID_KEY, -1L);
+            ORDER_SERVICE.getOrder(1L).enqueue(new Callback<OrderResponse>() {
                 @Override
                 public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
                     if (response.code() == 401) {
