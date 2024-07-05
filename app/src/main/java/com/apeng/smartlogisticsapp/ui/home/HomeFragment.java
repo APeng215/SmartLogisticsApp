@@ -1,7 +1,6 @@
 package com.apeng.smartlogisticsapp.ui.home;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.apeng.smartlogisticsapp.QRCodeScannerActivity;
+import com.apeng.smartlogisticsapp.activity.QRCodeScannerActivity;
 import com.apeng.smartlogisticsapp.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -26,8 +25,6 @@ public class HomeFragment extends Fragment {
                 new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
