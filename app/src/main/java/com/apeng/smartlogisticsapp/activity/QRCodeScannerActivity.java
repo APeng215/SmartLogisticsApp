@@ -1,6 +1,7 @@
 package com.apeng.smartlogisticsapp.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import com.google.zxing.integration.android.IntentResult;
 public class QRCodeScannerActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CAMERA = 1;
+    private static final String TAG = "QRCodeScannerActivity";
+    public static final String ORDER_ID_KEY = "orderId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +60,18 @@ public class QRCodeScannerActivity extends AppCompatActivity {
                 Toast.makeText(this, "Scan cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                setActivityResult(result);
             }
             finish();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private void setActivityResult(IntentResult result) {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(ORDER_ID_KEY, Long.valueOf(result.getContents()));
+        setResult(Activity.RESULT_OK, returnIntent);
     }
 
 }
